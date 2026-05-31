@@ -59,6 +59,9 @@
             --font-mono: 'JetBrains Mono', 'Courier New', monospace;
             --radius-card: 6px;
             --radius-btn: 5px;
+            --text-dim: rgba(160, 195, 235, 0.3);
+            --accent-light: #4A9EFF;
+            --gold-soft: #d9bb6e;
         }
 
         html {
@@ -98,6 +101,11 @@
             align-items: center;
             padding: 0 max(24px, calc((100vw - 1200px) / 2));
             z-index: 1000;
+            background: rgba(7, 18, 32, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            transition: background 0.3s, border-color 0.3s;
         }
 
         .nav-logo {
@@ -1408,6 +1416,11 @@
             .ticker-wrap::before { background: linear-gradient(to right, #f0f0f4, transparent); }
             .ticker-wrap::after  { background: linear-gradient(to left,  #f0f0f4, transparent); }
             .social-proof { background: rgba(241,241,245,0.85); }
+            #nav {
+                background: rgba(251, 251, 253, 0.15);
+                border-bottom-color: rgba(0, 0, 0, 0.06);
+            }
+            .nav-logo { color: #0d1b2e; }
         }
 
 
@@ -2271,14 +2284,10 @@
             }
 
             /* Section backgrounds */
-            .section-dark {
-                background: linear-gradient(180deg, rgba(235, 235, 240, 0.8) 0%, rgba(245, 245, 247, 0.6) 100%);
-            }
-            .section-light {
-                background: rgba(240, 240, 245, 0.5);
-            }
+            .section-dark,
+            .section-light,
             .section-white {
-                background: rgba(255, 255, 255, 0.5);
+                background: transparent;
             }
 
             /* Close section */
@@ -2344,6 +2353,442 @@
             .bnav-logo {
                 color: #1a1a1a;
             }
+
+
+        }
+
+        .stat-sources {
+            margin-top: 32px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            line-height: 1.8;
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+        }
+        .stat-sources sup {
+            font-size: 9px;
+            margin-right: 2px;
+            color: var(--gold);
+        }
+
+        /* ── FAQ Section ── */
+        #sec-faq {
+            padding: 120px 24px;
+            position: relative;
+            z-index: 2;
+        }
+        #sec-faq .section-headline { margin-left: 0; margin-right: 0; }
+        #sec-faq .section-subheadline { margin-bottom: 48px; }
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+        .faq-item:first-child {
+            border-top: 1px solid var(--border);
+        }
+        .faq-q {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 22px 0;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-family: var(--font-ui);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+            transition: color 0.2s;
+        }
+        .faq-q:hover { color: var(--gold); }
+        .faq-icon {
+            flex-shrink: 0;
+            color: var(--text-muted);
+            transition: transform 0.35s cubic-bezier(0.77, 0, 0.18, 1), color 0.2s;
+        }
+        .faq-item.open .faq-icon {
+            transform: rotate(180deg);
+            color: var(--gold);
+        }
+        .faq-item.open .faq-q { color: var(--gold); }
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.77, 0, 0.18, 1);
+        }
+        .faq-item.open .faq-a { max-height: 300px; }
+        .faq-a p {
+            padding-bottom: 22px;
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            font-weight: 300;
+            max-width: 700px;
+        }
+
+        /* ── Why Wescayl Comparison Matrix ── */
+        #sec-sectors {
+            position: relative;
+            z-index: 2;
+            padding: 120px 24px;
+            background:
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(27,77,153,0.18) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 40% at 0% 100%, rgba(201,168,76,0.06) 0%, transparent 60%);
+        }
+        #sec-sectors .section-headline {
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+        #sec-sectors .section-headline em {
+            font-style: normal;
+            background: linear-gradient(90deg, #C9A84C, #f0c96a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        #sec-sectors .section-subheadline {
+            margin-bottom: 48px;
+        }
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .eyebrow::before {
+            content: '';
+            width: 28px;
+            height: 2px;
+            background: var(--gold);
+            flex-shrink: 0;
+        }
+        .toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .segmented {
+            display: inline-flex;
+            padding: 4px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            position: relative;
+        }
+        .seg-btn {
+            position: relative;
+            z-index: 2;
+            padding: 10px 22px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-ui);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+            border-radius: 100px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .seg-btn .seg-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            opacity: 0.4;
+            transition: opacity 0.3s;
+        }
+        .seg-btn:hover { color: var(--text-primary); }
+        .seg-btn.active { color: #0a1220; }
+        .seg-btn.active .seg-dot { opacity: 1; }
+        .seg-glider {
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            left: 4px;
+            background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+            border-radius: 100px;
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.18, 1), width 0.4s cubic-bezier(0.77, 0, 0.18, 1);
+            box-shadow: 0 4px 18px rgba(201, 168, 76, 0.3);
+            z-index: 1;
+        }
+        .score {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 16px;
+            background: var(--gold-dim);
+            border: 1px solid var(--gold-border);
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.06em;
+        }
+        .score .score-num {
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .matrix-wrap {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: opacity 0.35s;
+        }
+        .matrix-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 40%;
+            width: calc(60% / 3);
+            background: linear-gradient(180deg, rgba(201,168,76,0.06) 0%, rgba(201,168,76,0.02) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .matrix-head {
+            display: grid;
+            grid-template-columns: 40% 1fr 1fr 1fr;
+            align-items: stretch;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+        .matrix-head > div {
+            padding: 22px 24px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .col-feature { color: var(--text-secondary) !important; }
+        .col-wescayl {
+            color: var(--gold) !important;
+            text-align: center;
+            position: relative;
+        }
+        .col-wescayl .wescayl-mark {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-transform: none;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            display: block;
+        }
+        .col-wescayl .wescayl-sub {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+        }
+        .col-competitor { text-align: center; }
+        .col-competitor strong {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0;
+            text-transform: none;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+        }
+        .matrix-row {
+            display: grid;
+            grid-template-columns: 40% 1fr 1fr 1fr;
+            align-items: stretch;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .matrix-row:last-child { border-bottom: none; }
+        .matrix-row:hover { background: rgba(255,255,255,0.018); }
+        .matrix-row:hover .feature-cell .feat-arrow {
+            transform: translateX(4px);
+            color: var(--gold);
+        }
+        .feature-cell {
+            padding: 22px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .feat-num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+            width: 24px;
+        }
+        .feat-text {
+            flex: 1;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
+            letter-spacing: -0.005em;
+            line-height: 1.4;
+        }
+        .feat-arrow {
+            font-size: 14px;
+            color: var(--text-dim);
+            transition: transform 0.2s, color 0.2s;
+            flex-shrink: 0;
+        }
+        .cell {
+            padding: 22px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .mark {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .mark.yes {
+            background: var(--gold-dim);
+            border: 1px solid var(--gold-border);
+            color: var(--gold);
+        }
+        .mark.no {
+            background: transparent;
+            border: 1px solid var(--border-strong);
+            color: var(--text-dim);
+        }
+        .mark.partial {
+            background: rgba(74,158,255,0.08);
+            border: 1px solid rgba(74,158,255,0.3);
+            color: var(--accent-light);
+        }
+        .mark svg { width: 13px; height: 13px; }
+        .cell-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+        .cell-label.gold { color: var(--gold); }
+        .cell-label.blue { color: var(--accent-light); }
+        .matrix-row .detail {
+            grid-column: 1 / -1;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+        }
+        .matrix-row.open .detail { max-height: 200px; }
+        .detail-inner {
+            padding: 0 24px 22px;
+            display: grid;
+            grid-template-columns: 40% 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+        .detail-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+        .detail-body {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .matrix-row .chevron { transition: transform 0.3s; }
+        .matrix-row.open .chevron { transform: rotate(180deg); color: var(--gold); }
+        .matrix-footer-row {
+            margin-top: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .matrix-legend {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .matrix-legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .matrix-legend-item .mark { width: 18px; height: 18px; }
+        .matrix-legend-item .mark svg { width: 9px; height: 9px; }
+        .matrix-tagline {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        .matrix-tagline span { color: var(--gold); margin: 0 6px; }
+        @media (max-width: 760px) {
+            .matrix-head { grid-template-columns: 1fr 1fr 1fr 1fr; }
+            .matrix-head .col-feature { display: none; }
+            .matrix-row { grid-template-columns: 1fr; padding: 6px 0; }
+            .feature-cell { padding: 18px 18px 6px; }
+            .cell { padding: 8px 18px; flex-direction: row; justify-content: flex-start; gap: 12px; }
+            .cell::before {
+                content: attr(data-vendor);
+                font-family: var(--font-mono);
+                font-size: 10px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                flex: 1;
+            }
+            .matrix-wrap::before { display: none; }
         }
     </style>
     <script type="application/ld+json">
@@ -2394,7 +2839,7 @@
                 </div>
                 <div class="pain-point stagger-item">
                     <div class="pain-title">Logistics gets your goods there. It does not get them sold.</div>
-                    <div class="pain-description">Moving boxes from India to a UK warehouse is one problem. Getting those boxes discovered, listed correctly, stocked by UK retailers, and marketed to British consumers who have never heard of your brand   that is an entirely different operation.</div>
+                    <div class="pain-description">Moving boxes from India to an international warehouse is one problem. Getting those boxes discovered, listed correctly, stocked by local retailers, and marketed to consumers in a new market who have never heard of your brand — that is an entirely different operation.</div>
                 </div>
                 <div class="pain-point stagger-item">
                     <div class="pain-title">Wescayl was built to close that gap.</div>
@@ -2408,44 +2853,198 @@
     <!-- UK Market Opportunity -->
     <section class="section-light" id="sec-market">
         <div class="container">
-            <h2 class="section-headline fade-in">The UK online marketplace. The numbers that matter.</h2>
+            <h2 class="section-headline fade-in">The markets that matter. The numbers behind them.</h2>
             <div class="stat-cards">
                 <div class="stat-card stagger-item">
-                    <div class="stat-number">60M</div>
-                    <div class="stat-label">Online marketplace users</div>
+                    <div class="stat-number">52M</div>
+                    <div class="stat-label">UK online shoppers in 2025 <sup>1</sup></div>
                 </div>
                 <div class="stat-card stagger-item">
-                    <div class="stat-number">£30B</div>
-                    <div class="stat-label">Spend across online marketplaces</div>
+                    <div class="stat-number">£34B</div>
+                    <div class="stat-label">UK online marketplace GMV <sup>2</sup></div>
                 </div>
                 <div class="stat-card stagger-item">
-                    <div class="stat-number">30%</div>
-                    <div class="stat-label">E-commerce share of all retail spend</div>
+                    <div class="stat-number">€842B</div>
+                    <div class="stat-label">European B2C e-commerce turnover <sup>3</sup></div>
+                </div>
+                <div class="stat-card stagger-item">
+                    <div class="stat-number">$1.2T</div>
+                    <div class="stat-label">US e-commerce annual sales <sup>4</sup></div>
                 </div>
             </div>
+            <p class="stat-sources">
+                <sup>1</sup> Statista, E-commerce Users UK, 2025 &nbsp;·&nbsp;
+                <sup>2</sup> Mintel, UK Online Retailing: Marketplaces Report, 2025 &nbsp;·&nbsp;
+                <sup>3</sup> Ecommerce Europe / EuroCommerce, European E-commerce Report, 2024 &nbsp;·&nbsp;
+                <sup>4</sup> US Census Bureau, Quarterly Retail E-Commerce Sales, 2024
+            </p>
         </div>
     </section>
 
     <!-- Standout Services -->
-    <section class="section-white" id="sec-sectors">
-        <div class="container">
-            <h2 class="section-headline fade-in">Three reasons why brands choose Wescayl</h2>
-            <div class="pain-points">
-                <div class="pain-point stagger-item" style="border-left-color:#C9A84C">
-                    <div class="pain-title" style="color:#C9A84C">UK storage from ₹500/Pallet per week</div>
-                    <div class="pain-description">Store your high-selling SKUs in the UK for as low as ₹500 per pallet. Get your inventory closer to your customers   without the overheads of setting up your own warehouse.<sup>*</sup></div>
-                    <div style="font-size:11px;color:var(--text-muted);margin-top:12px;line-height:1.5"><sup>*</sup> T&amp;C applies. Pricing subject to shipment volume, pallet dimensions, and storage duration.</div>
-                </div>
-                <div class="pain-point stagger-item" style="border-left-color:#C9A84C">
-                    <div class="pain-title" style="color:#C9A84C">Reduced freight through consolidation</div>
-                    <div class="pain-description">Partner with us to consolidate your shipments alongside other brands and benefit from significantly reduced freight rates. Shared containers, shared costs   no compromise on speed or reliability.</div>
-                </div>
-                <div class="pain-point stagger-item" style="border-left-color:#C9A84C">
-                    <div class="pain-title" style="color:#C9A84C">Returns that pay for themselves</div>
-                    <div class="pain-description">Streamline your returns process with Wescayl and turn reverse logistics into a cost-saving advantage. We handle inspection, repackaging, and restocking   so every return becomes an opportunity, not a write-off.</div>
-                </div>
-            </div>
+    <section id="sec-sectors">
+      <div class="container">
+
+        <div class="eyebrow">Why brands switch to Wescayl</div>
+        <h2 class="section-headline fade-in">Better than traditional 3PLs.<br><em>Smarter than Amazon MCF.</em></h2>
+        <p class="section-subheadline">Most logistics partners are one-size-fits-all. Wescayl is built around how you actually go to market.</p>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+          <div class="segmented" id="seg">
+            <div class="seg-glider" id="glider"></div>
+            <button class="seg-btn active" data-tab="marketplace">
+              <span class="seg-dot"></span>
+              Marketplace Sellers
+            </button>
+            <button class="seg-btn" data-tab="d2c">
+              <span class="seg-dot"></span>
+              D2C Sellers
+            </button>
+          </div>
+
         </div>
+
+        <!-- Matrix -->
+        <div class="matrix-wrap" id="matrix-wrap">
+          <div class="matrix-head">
+            <div class="col-feature">Capability</div>
+            <div class="col-wescayl">
+              <span class="wescayl-mark">Wescayl</span>
+              <span class="wescayl-sub">— You —</span>
+            </div>
+            <div class="col-competitor">
+              <strong>Traditional 3PL</strong>
+              <span>The old way</span>
+            </div>
+            <div class="col-competitor">
+              <strong>Amazon MCF</strong>
+              <span>Locked in</span>
+            </div>
+          </div>
+          <div id="rows"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="matrix-footer-row">
+          <div class="matrix-legend">
+            <span class="matrix-legend-item">
+              <span class="mark yes"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Included
+            </span>
+            <span class="matrix-legend-item">
+              <span class="mark partial"><svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="3" fill="currentColor"/></svg></span>
+              Partial
+            </span>
+            <span class="matrix-legend-item">
+              <span class="mark no"><svg viewBox="0 0 12 12" fill="none"><path d="M3 6h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              Not offered
+            </span>
+          </div>
+          <div class="matrix-tagline">One platform <span>·</span> Two playbooks <span>·</span> Zero compromises</div>
+        </div>
+
+      </div>
+
+      <script>
+        (function() {
+          var data = {
+            marketplace: [
+              { feature: 'Freight Consolidation Calendar', detail: 'Plan shipments around shared container windows. Book a date, share a 40ft container with 3–5 other brands, ship at LCL rates without LCL delays.', wescayl: 'yes', trad: 'no', mcf: 'no' },
+              { feature: '20% Cheaper UK Trucking', detail: 'Negotiated rates 20% below market for inbound trucking from UK ports to fulfilment centres. Shared volume, shared savings.', wescayl: 'yes', trad: 'no', mcf: 'no' },
+              { feature: 'Daily Inventory MIS', detail: 'Stock levels, sell-through, days-of-cover — refreshed every 24 hours. No surprise stockouts on Amazon UK or Etsy.', wescayl: 'yes', trad: 'partial', mcf: 'yes' },
+              { feature: 'Appointment-Based Booking', detail: 'Pre-book inbound delivery slots. No warehouse queues, no missed receiving, no detention fees.', wescayl: 'yes', trad: 'partial', mcf: 'yes' },
+              { feature: 'Q4 Peak Surcharge', detail: 'Most 3PLs and Amazon MCF hit you with peak-season surcharges from Oct–Dec — exactly when you sell most. Wescayl charges the same rate year-round.', wescayl: 'no', trad: 'no', mcf: 'yes' },
+              { feature: 'Unsold-Inventory Surcharge', detail: 'Long-term storage at Amazon kicks in at 181 days. Wescayl charges flat storage on what you have, when you have it.', wescayl: 'no', trad: 'partial', mcf: 'yes' },
+              { feature: 'Dedicated Point of Contact', detail: 'A named operations contact for your account. Not a ticket queue, not a chatbot, not a shared inbox.', wescayl: 'yes', trad: 'yes', mcf: 'no' },
+            ],
+            d2c: [
+              { feature: 'Next-Day UK Delivery', detail: 'Cut-off at 4pm. Out next day across mainland UK via Royal Mail, DPD, or Evri — courier picked per order, not per contract.', wescayl: 'yes', trad: 'partial', mcf: 'yes' },
+              { feature: 'Weekly Dispatch Reports', detail: "Every Monday: what shipped, what's pending, what's stuck, recovery actions. Visibility your D2C team actually uses.", wescayl: 'yes', trad: 'partial', mcf: 'partial' },
+              { feature: 'Shopify ↔ Warehouse Integration', detail: 'Native two-way sync. Orders flow from Shopify to our pick-pack queue automatically. Tracking flows back to the customer in real time.', wescayl: 'yes', trad: 'partial', mcf: 'partial' },
+              { feature: 'Full Brand Control Over Packaging', detail: 'Your boxes, your inserts, your tissue paper, your thank-you cards. We pack to your brand spec — not a generic Amazon mailer.', wescayl: 'yes', trad: 'yes', mcf: 'no' },
+              { feature: 'Lower Storage Than Amazon MCF', detail: 'Amazon MCF charges multi-channel fees on top of FBA storage. Wescayl charges flat per pallet — typically 30–50% lower on slow-moving SKUs.', wescayl: 'yes', trad: 'partial', mcf: 'no' },
+              { feature: 'Dedicated POC: Tracking & Missed Fulfilments', detail: 'When an order goes wrong, you call a person who already knows your account. Escalations resolved by name, not by ticket ID.', wescayl: 'yes', trad: 'yes', mcf: 'no' },
+              { feature: 'Returns: Inspect, Re-add, Discard', detail: 'Every return is checked. Resaleable stock goes back to live inventory. Damaged stock is discarded or consolidated and shipped back to India.', wescayl: 'yes', trad: 'yes', mcf: 'partial' },
+            ],
+          };
+
+          function mark(state) {
+            if (state === 'yes')     return '<span class="mark yes"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+            if (state === 'partial') return '<span class="mark partial"><svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="3" fill="currentColor"/></svg></span>';
+            return '<span class="mark no"><svg viewBox="0 0 12 12" fill="none"><path d="M3 6h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>';
+          }
+
+          function labelFor(state, who) {
+            if (state === 'yes')     return who === 'wescayl' ? 'Standard' : 'Yes';
+            if (state === 'partial') return 'Limited';
+            return '—';
+          }
+
+          var rowsEl = document.getElementById('rows');
+          var matrixWrap = document.getElementById('matrix-wrap');
+
+          var glider = document.getElementById('glider');
+          var currentTab = 'marketplace';
+
+          function render(tab) {
+            var list = data[tab];
+            var wins = list.filter(function(r) { return r.wescayl === 'yes'; }).length;
+
+            matrixWrap.style.opacity = '0';
+            setTimeout(function() {
+              rowsEl.innerHTML = list.map(function(r, i) {
+                return '<div class="matrix-row" data-idx="' + i + '">' +
+                  '<div class="feature-cell">' +
+                    '<span class="feat-num">' + String(i+1).padStart(2,'0') + '</span>' +
+                    '<span class="feat-text">' + r.feature + '</span>' +
+                    '<span class="feat-arrow chevron">\u2304</span>' +
+                  '</div>' +
+                  '<div class="cell" data-vendor="Wescayl">' + mark(r.wescayl) + '<span class="cell-label ' + (r.wescayl === 'yes' ? 'gold' : '') + '">' + labelFor(r.wescayl, 'wescayl') + '</span></div>' +
+                  '<div class="cell" data-vendor="Traditional 3PL">' + mark(r.trad) + '<span class="cell-label ' + (r.trad === 'partial' ? 'blue' : '') + '">' + labelFor(r.trad) + '</span></div>' +
+                  '<div class="cell" data-vendor="Amazon MCF">' + mark(r.mcf) + '<span class="cell-label ' + (r.mcf === 'partial' ? 'blue' : '') + '">' + labelFor(r.mcf) + '</span></div>' +
+                  '<div class="detail"><div class="detail-inner"><div></div><div><div class="detail-eyebrow">How Wescayl handles it</div><div class="detail-body">' + r.detail + '</div></div></div></div>' +
+                '</div>';
+              }).join('');
+              rowsEl.querySelectorAll('.matrix-row').forEach(function(row) {
+                row.addEventListener('click', function() {
+                  var wasOpen = row.classList.contains('open');
+                  rowsEl.querySelectorAll('.matrix-row.open').forEach(function(r) { r.classList.remove('open'); });
+                  if (!wasOpen) row.classList.add('open');
+                });
+              });
+              matrixWrap.style.opacity = '1';
+            }, 200);
+          }
+
+          function moveGlider(btn) {
+            var rect = btn.getBoundingClientRect();
+            var parentRect = btn.parentElement.getBoundingClientRect();
+            glider.style.width = rect.width + 'px';
+            glider.style.transform = 'translateX(' + (rect.left - parentRect.left - 4) + 'px)';
+          }
+
+          document.querySelectorAll('.seg-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              document.querySelectorAll('.seg-btn').forEach(function(b) { b.classList.remove('active'); });
+              btn.classList.add('active');
+              moveGlider(btn);
+              currentTab = btn.dataset.tab;
+              render(currentTab);
+            });
+          });
+
+          window.addEventListener('load', function() {
+            moveGlider(document.querySelector('.seg-btn.active'));
+            render(currentTab);
+          });
+          window.addEventListener('resize', function() {
+            moveGlider(document.querySelector('.seg-btn.active'));
+          });
+          moveGlider(document.querySelector('.seg-btn.active'));
+          render(currentTab);
+        })();
+      </script>
     </section>
 
     <!-- Top Selling Channels -->
@@ -2490,16 +3089,16 @@
             <h3 class="fade-in" style="font-size:1.8rem;font-weight:700;margin:64px 0 32px 0">Top categories on UK marketplaces</h3>
             <div class="pain-points">
                 <div class="pain-point stagger-item" style="border-left-color:#C9A84C">
+                    <div class="pain-title" style="color:#C9A84C">Home & Kitchen   30% of Amazon sellers, Wayfair dominant</div>
+                    <div class="pain-description">Home decor is the second-largest category on Amazon UK. Wayfair is the dedicated destination. Indian artisan homeware   brass, cane, hand-painted ceramics   sits exactly in the premium-but-affordable segment UK buyers are actively seeking.</div>
+                </div>
+                <div class="pain-point stagger-item" style="border-left-color:#C9A84C">
                     <div class="pain-title" style="color:#C9A84C">Health & Beauty   9% of eBay, 30% of Amazon sellers</div>
                     <div class="pain-description">The largest opportunity for Indian brands. Skincare, Ayurveda supplements, herbal oils, and wellness products are the fastest-growing sub-categories. Natural and organic credentials are a purchase driver, not a niche.</div>
                 </div>
                 <div class="pain-point stagger-item" style="border-left-color:#C9A84C">
                     <div class="pain-title" style="color:#C9A84C">Fashion & Apparel   28.7% of UK e-commerce revenue</div>
                     <div class="pain-description">Amazon fashion is growing at 12.4% CAGR. Sustainable and ethically made clothing commands a premium. Indian handloom, block-print, and artisan brands have a direct narrative advantage over fast fashion competitors.</div>
-                </div>
-                <div class="pain-point stagger-item" style="border-left-color:#C9A84C">
-                    <div class="pain-title" style="color:#C9A84C">Home & Kitchen   30% of Amazon sellers, Wayfair dominant</div>
-                    <div class="pain-description">Home decor is the second-largest category on Amazon UK. Wayfair is the dedicated destination. Indian artisan homeware   brass, cane, hand-painted ceramics   sits exactly in the premium-but-affordable segment UK buyers are actively seeking.</div>
                 </div>
                 <div class="pain-point stagger-item" style="border-left-color:#C9A84C">
                     <div class="pain-title" style="color:#C9A84C">Food & Beverages   £19.45B market</div>
@@ -2608,7 +3207,6 @@
                         <span class="svc-num">04</span>
                         <span class="svc-title">Marketing Consultancy</span>
                         <span class="svc-tag tag-marketing">Growth</span>
-                        <span style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(251,191,36,0.15);color:#FBBF24;border:1px solid rgba(251,191,36,0.3)">Coming Soon</span>
                         <span class="svc-chevron">▾</span>
                     </div>
                     <div class="svc-body">
@@ -2779,6 +3377,61 @@
             </div>
             </div><!-- /testimonials-block -->
         </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="sec-faq">
+      <div class="container" style="max-width:860px">
+
+        <div class="eyebrow">Frequently asked questions</div>
+        <h2 class="section-headline fade-in">Everything you need to know</h2>
+        <p class="section-subheadline">Can't find an answer? <a href="mailto:info@wescayl.com" style="color:var(--gold);text-decoration:none">Drop us a line</a> and we'll reply within one business day.</p>
+
+        <div class="faq-list" id="faq-list"></div>
+
+      </div>
+
+      <script>
+        (function() {
+          var faqs = [
+            { q: 'Do I need a local company in my target market?', a: 'For serious long-term expansion into any new market, having a local business entity often simplifies VAT or tax registration, marketplace verification, banking, and operational compliance. Requirements vary by country — Wescayl advises on a market-by-market basis and helps you navigate the full setup process, from entity formation through to logistics and fulfilment.' },
+            { q: 'Is Wescayl a logistics company?', a: 'No. Logistics is only one part of what we do. Wescayl combines freight forwarding, customs clearance, 3PL warehousing, ecommerce fulfilment, marketplace operations, and ecommerce growth support into one end-to-end infrastructure layer for global ecommerce and cross-border expansion.' },
+            { q: 'What happens if customers return products?', a: 'Returns are processed through our in-market fulfilment facilities where products are inspected, repackaged where possible, and restocked into inventory. This helps ecommerce brands recover value instead of writing off returned stock, while improving operations and customer experience.' },
+            { q: 'Do you store inventory in international markets?', a: 'Yes. Wescayl provides warehouse and ecommerce fulfilment infrastructure so Shopify brands, Amazon sellers, and D2C brands can offer faster delivery times and a better customer experience in their target markets. The UK is our flagship fulfilment market, with additional markets available depending on your expansion roadmap.' },
+            { q: 'Can I ship small quantities initially?', a: 'Yes. Many brands begin with smaller test shipments using consolidated international shipping and freight forwarding solutions. This allows you to validate demand in your target market before committing to larger inventory volumes.' },
+            { q: 'What if my products are stopped at customs?', a: 'Before shipment, Wescayl conducts a compliance and documentation audit covering labelling, certifications, packaging, and customs clearance requirements for your target market. Requirements vary by destination — UKCA for the UK, CE marking for the EU, ESMA for the UAE, and FDA/FTC for the US. We assess all relevant standards during onboarding to minimise delays at the border.' },
+            { q: 'Do I need certifications for my target market?', a: 'It depends on your product category and destination. Some products require certifications or registrations before entering a new market, while others only require compliant labelling and documentation. Wescayl helps beauty, supplement, fashion, and other brands navigate destination-specific compliance requirements — whether that is UKCA, CE, ESMA, or other applicable standards — during onboarding.' },
+            { q: 'Will you help us market our products internationally?', a: 'Yes. Wescayl supports ecommerce brands with local market positioning, ecommerce marketing, marketplace expansion, creator collaborations, paid media direction, and growth strategy tailored to your target audience. We help brands scale beyond logistics and build sustainable long-term presence in new markets.' },
+            { q: 'How is pricing structured?', a: 'Pricing depends on shipment volume, storage requirements, fulfilment activity, and the markets you are expanding into. Most brands begin with a tailored plan based on their product category, target sales channels, and expected demand in their destination markets.' },
+            { q: 'Are there long-term contracts?', a: "We structure engagements based on operational requirements, growth stage, and expansion goals. During your discovery call, we'll recommend the most suitable setup for your global ecommerce and international marketplace expansion strategy." },
+          ];
+
+          var list = document.getElementById('faq-list');
+          list.innerHTML = faqs.map(function(f, i) {
+            return '<div class="faq-item" data-idx="' + i + '">' +
+              '<button class="faq-q" aria-expanded="false">' +
+                '<span>' + f.q + '</span>' +
+                '<svg class="faq-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+              '</button>' +
+              '<div class="faq-a"><p>' + f.a + '</p></div>' +
+            '</div>';
+          }).join('');
+
+          list.querySelectorAll('.faq-item').forEach(function(item) {
+            item.querySelector('.faq-q').addEventListener('click', function() {
+              var isOpen = item.classList.contains('open');
+              list.querySelectorAll('.faq-item.open').forEach(function(o) {
+                o.classList.remove('open');
+                o.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+              });
+              if (!isOpen) {
+                item.classList.add('open');
+                this.setAttribute('aria-expanded', 'true');
+              }
+            });
+          });
+        })();
+      </script>
     </section>
 
     <!-- CTA Section -->
@@ -3001,6 +3654,7 @@
             { id: 'uk-market',   label: 'Channels'  },
             { id: 'services',          label: 'Services'  },
             { id: 'sec-social-proof',  label: 'Reviews'   },
+            { id: 'sec-faq',           label: 'FAQ'       },
             { id: 'sec-cta',           label: 'Contact'   },
         ];
 
