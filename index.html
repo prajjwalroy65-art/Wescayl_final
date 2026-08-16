@@ -3065,8 +3065,10 @@
               { feature: '20% Cheaper UK Trucking', detail: 'Negotiated rates 20% below market for inbound trucking from UK ports to fulfilment centres. Shared volume, shared savings.', wescayl: 'yes', trad: 'no', mcf: 'no' },
               { feature: 'Daily Inventory MIS', detail: 'Stock levels, sell-through, days-of-cover — refreshed every 24 hours. No surprise stockouts on Amazon UK or Etsy.', wescayl: 'yes', trad: 'partial', mcf: 'yes' },
               { feature: 'Appointment-Based Booking', detail: 'Pre-book inbound delivery slots. No warehouse queues, no missed receiving, no detention fees.', wescayl: 'yes', trad: 'partial', mcf: 'yes' },
-              { feature: 'Q4 Peak Surcharge', detail: 'Most 3PLs and Amazon MCF hit you with peak-season surcharges from Oct–Dec — exactly when you sell most. Wescayl charges the same rate year-round.', wescayl: 'no', trad: 'no', mcf: 'yes' },
-              { feature: 'Unsold-Inventory Surcharge', detail: 'Long-term storage at Amazon kicks in at 181 days. Wescayl charges flat storage on what you have, when you have it.', wescayl: 'no', trad: 'partial', mcf: 'yes' },
+              // HIDDEN — unhide by removing the hidden:true flag from the two rows below
+              { feature: 'Q4 Peak Surcharge', detail: 'Most 3PLs and Amazon MCF hit you with peak-season surcharges from Oct–Dec — exactly when you sell most. Wescayl charges the same rate year-round.', wescayl: 'no', trad: 'no', mcf: 'yes', hidden: true },
+              { feature: 'Unsold-Inventory Surcharge', detail: 'Long-term storage at Amazon kicks in at 181 days. Wescayl charges flat storage on what you have, when you have it.', wescayl: 'no', trad: 'partial', mcf: 'yes', hidden: true },
+              // END HIDDEN
               { feature: 'Dedicated Point of Contact', detail: 'A named operations contact for your account. Not a ticket queue, not a chatbot, not a shared inbox.', wescayl: 'yes', trad: 'yes', mcf: 'no' },
             ],
             d2c: [
@@ -3099,7 +3101,7 @@
           var currentTab = 'marketplace';
 
           function render(tab) {
-            var list = data[tab];
+            var list = data[tab].filter(function(r) { return !r.hidden; });
             var wins = list.filter(function(r) { return r.wescayl === 'yes'; }).length;
 
             matrixWrap.style.opacity = '0';
