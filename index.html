@@ -4087,9 +4087,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         window.formspree = window.formspree || function() { (formspree.q = formspree.q || []).push(arguments); };
         formspree("initForm", { formElement: "#contact-form", formId: "xdabzpor" });
 
-        // Close modal ~2s after successful submission
+        // Close modal ~2s after successful submission + fire GTM conversion event
         document.getElementById("contact-form").addEventListener("fs-success", function() {
             setTimeout(closeModal, 2500);
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: 'formspree_success' });
         });
     </script>
 
