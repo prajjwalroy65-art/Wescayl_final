@@ -4115,6 +4115,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         openBtn.addEventListener('click', openModal);
         document.getElementById('open-modal-hero').addEventListener('click', openModal);
 
+        // Campaign sub-path: wescayl.com/get-started opens the form on load
+        if (window.location.pathname.replace(/\/$/, '') === '/get-started') {
+            openModal();
+        }
+
         // Stop hero video on last frame
         var heroVideo = document.getElementById('hero-video');
         if (heroVideo) {
